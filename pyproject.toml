@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdfparser"
+version = "0.1.0"
+description = "Parse standard or scanned PDFs into structured elements: headings, paragraphs, and images. Optional OCR and vision-LLM enrichment."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Your Name", email = "you@example.com" }
+]
+keywords = ["pdf", "ocr", "document parsing", "layout", "headings", "vision"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Development Status :: 3 - Alpha",
+  "Topic :: Text Processing :: Linguistic",
+]
+dependencies = [
+  "pymupdf>=1.24.0",
+  "pytesseract>=0.3.10",
+  "Pillow>=10.0.0",
+]
+
+[project.optional-dependencies]
+vision = [
+  "openai>=1.30.0",
+]
+
+[project.scripts]
+pdfparser = "pdfparser.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
